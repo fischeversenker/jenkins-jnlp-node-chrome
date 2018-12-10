@@ -1,13 +1,11 @@
-FROM jenkinsci/jnlp-slave:alpine
+FROM jenkinsci/jnlp-slave:latest
 
 USER root
 
-ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 10.14.1-r0
+RUN apt-get update
 
-RUN apk add --no-cache gnupg git jq curl nodejs-current npm rsync python build-base
-
-ADD wait-for-it /usr/local/bin
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install -y nodejs
 
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | tee -a /etc/apt/sources.list \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -\
