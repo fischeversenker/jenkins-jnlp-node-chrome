@@ -15,6 +15,7 @@ RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | tee -a /etc/
 
 # install firefox
 RUN echo "deb http://ppa.launchpad.net/mozillateam/firefox-next/ubuntu trusty main" | tee -a /etc/apt/sources.list \
+    && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CE49EC21 \
     && apt-get update \
     && apt-get install -y --no-install-recommends firefox
 
