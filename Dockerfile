@@ -1,9 +1,9 @@
-FROM jenkinsci/jnlp-slave:alpine
+FROM jenkinsci/jnlp-slave:latest
 
 USER root
 
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 10.13.0
+ENV NODE_VERSION 10.14.1
 
 RUN apk add --no-cache gnupg git jq curl nodejs=$NODE_VERSION npm rsync python build-base
 
