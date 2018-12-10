@@ -14,7 +14,11 @@ RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | tee -a /etc/
     && apt-get install -y --no-install-recommends google-chrome-stable
 
 # install firefox
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends firefox-esr
+RUN cd /tmp \
+    && wget -O FirefoxSetup.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US" \
+    && mkdir /opt/firefox \
+    && tar xjf FirefoxSetup.tar.bz2 -C /opt/firefox/
+
+ENV FIREFOX_BIN /opt/firefox/firefox/firefox
 
 USER jenkins
