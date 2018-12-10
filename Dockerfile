@@ -14,7 +14,7 @@ RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | tee -a /etc/
     && apt-get install -y --no-install-recommends google-chrome-stable
 
 # install firefox
-RUN add-apt-repository ppa:mozillateam/firefox-next \
+RUN echo "deb http://ppa.launchpad.net/mozillateam/firefox-next/ubuntu trusty main" | tee -a /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y --no-install-recommends firefox
 
