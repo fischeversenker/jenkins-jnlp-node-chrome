@@ -2,17 +2,8 @@ FROM jenkinsci/jnlp-slave:latest
 
 USER root
 
-# add sources
-# RUN rm /etc/apt/sources.list \
-#     && touch /etc/apt/sources.list \
-#     && echo "deb http://deb.debian.org/debian stretch main" | tee -a /etc/apt/sources.list
-
-# update sources
-RUN apt-get update
-
 # install node
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -\
-    && apt-get update
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
 
 # install chrome
@@ -21,8 +12,8 @@ RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | tee -a /etc/
     && apt-get update \
     && apt-get install -y --no-install-recommends google-chrome-stable
 
-# install firefox
-RUN apt-get install -y --no-install-recommends firefox
+# install firefox-esr
+RUN apt-get install -y --no-install-recommends firefox-esr
 
 # RUN cd /tmp \
 #     && wget -O FirefoxSetup.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US" \
